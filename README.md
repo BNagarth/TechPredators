@@ -68,7 +68,7 @@ For the frontend, we have used REACT which is connected to a backend fastAPI ser
 <!-- GETTING STARTED -->
 ## Getting Started
 
-### Prerequisites
+### Pre-requisites
 
 Python (https://docs.python.org/3/using/index.html)
 
@@ -125,11 +125,6 @@ Model was trained on virtual machine by ssh using commands
   ```
 Running jupyter nitebook on localhost:8000
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
 
 
