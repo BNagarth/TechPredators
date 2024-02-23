@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Camera Capture</title>
+    <!-- Load TensorFlow.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+</head>
+<body>
+    <h1>Live Camera Capture</h1>
+    <video id="videoElement" width="640" height="480" autoplay></video>
+    <canvas id="canvasElement" width="640" height="480" style="display:none;"></canvas>
+    <button onclick="captureAndClassify()">Capture and Classify</button>
+    <p id="prediction"></p>
+
+    <script>
+        async function startCamera() {
+            const constraints = { video: true };
+
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                const videoElement = document.getElementById('videoElement');
+                videoElement.srcObject = stream;
+            } catch (err) {
+                console.error('Error accessing the camera:', err);
+            }
+        }
+
+        async function captureAndClassify() {
+            const videoElement = document.getElementById('videoElement');
+            const canvasElement = document.getElementById('canvasElement');
+            const context = canvasElement.getContext('2d');
+            context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+
+            const imageData = context.getImageData(0, 0, canvasElement.width, canvasElement.height);
+
+            // Load the pre-trained model
+            const model = await tf.loadLayersModel('path_to_your_model/model.json');
+
+            // Preprocess the image
+            const img = tf.browser.fromPixels(imageData).resizeNearestNeighbor([224, 224]).toFloat();
+            const offset = tf.scalar(127.5);
+            const normalized = img.sub(offset).div(offset).expandDims();
+
+            // Perform inference
+            const predictions = await model.predict(normalized).data();
+            const labels = ['Label 1', 'Label 2', 'Label 3']; // Replace with your own labels
+
+            // Display prediction
+            const prediction = labels[predictions.indexOf(Math.max(...predictions))];
+            document.getElementById('prediction').innerText = Prediction: ${prediction};
+        }
+
+        window.onload = startCamera;
+    </script>
+</body>
+</html>
