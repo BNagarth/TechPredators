@@ -39,7 +39,6 @@ Open Innovation | AI for Social Impact | The focus here is on open innovation fo
 <!-- ABOUT THE PROJECT -->
 ## About The Solution
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 <ul>
   <li>
@@ -131,15 +130,6 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   npm install npm@latest -g
   ```
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 
 
