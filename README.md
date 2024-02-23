@@ -39,7 +39,6 @@ Open Innovation | AI for Social Impact | The focus here is on open innovation fo
 <!-- ABOUT THE PROJECT -->
 ## About The Solution
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 <ul>
   <li>
